@@ -37,41 +37,183 @@ function seleccionarMascotaJugador() {
     }
 
     //mascotaEnemigo
-    seleccionarMascotaEnemigo()
+    seleccionarMascotaEnemigo(spanMascotaJugador.innerHTML)
 
 }
 
-function seleccionarMascotaEnemigo() {
+function seleccionarMascotaEnemigo(tuMascota) {
 
-    let numeroAleatorio = aleatorio(1,6)
+    let numeroAleatorio = aleatorio(1, 6)
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
 
 
-     if (numeroAleatorio==1) {
+    if (numeroAleatorio == 1) {
         spanMascotaEnemigo.innerHTML = 'Hipodoge'
         alert("Enemigo selecciona a Hipodoge")
-    } else if (numeroAleatorio==2) {
+    } else if (numeroAleatorio == 2) {
         spanMascotaEnemigo.innerHTML = 'Capipeo'
         alert("Enemigo selecciona a Capipepo")
-    } else if (numeroAleatorio==3) {
+    } else if (numeroAleatorio == 3) {
         spanMascotaEnemigo.innerHTML = 'Ratigueya'
         alert("Enemigo selecciona a Ratigueya")
-    } else if (numeroAleatorio==4) {
+    } else if (numeroAleatorio == 4) {
         spanMascotaEnemigo.innerHTML = 'Langostelvis'
         alert("Enemigo selecciona a Langostelvis")
-    } else if (numeroAleatorio==5) {
+    } else if (numeroAleatorio == 5) {
         spanMascotaEnemigo.innerHTML = 'Tucapalma'
         alert("Enemigo selecciona a Tucapalma")
-    } else if (numeroAleatorio==6) {
+    } else if (numeroAleatorio == 6) {
         spanMascotaEnemigo.innerHTML = 'Pydos'
         alert("Enemigo selecciona a Pydos")
     } else {
         alert("Enemigo selecciona a una mascota")
     }
+
+    pelear(tuMascota, spanMascotaEnemigo.innerHTML)
 }
 
-function aleatorio(min,max){
-    return Math.floor(Math.random()*(max-min+1)+min)
+function pelear(tuMascota, mascotaEnemigo) {
+    let spanVidasTuMascota = document.getElementById('vidas-tumascota')
+    let spanVidasMascotaEnemigo = document.getElementById('vidas-mascotaEnemigo')
+    let pelea = 0
+
+    switch (tuMascota) {
+        case "Hipodoge":
+            pelea = peleaConHipodoge(mascotaEnemigo)
+            break
+        case "Capipeo":
+            pelea = peleaConCapipeo(mascotaEnemigo)
+            break
+        case "Ratigueya":
+            pelea = peleaConRatigueya(mascotaEnemigo)
+            break
+        case "Langostelvis":
+            pelea = peleaConLangostelvis(mascotaEnemigo)
+            break
+        case "Tucapalma":
+            pelea = peleaConTucapalma(mascotaEnemigo)
+            break
+        case "Pydos":
+            pelea = peleaConPydos(mascotaEnemigo)
+            break
+        default:
+            pelea = 0
+    }
+
+    // Restar vidas según el resultado
+    if (pelea === 1) {
+        spanVidasMascotaEnemigo.innerHTML = parseInt(spanVidasMascotaEnemigo.innerHTML) - 1
+    } else if (pelea === -1) {
+        spanVidasTuMascota.innerHTML = parseInt(spanVidasTuMascota.innerHTML) - 1
+    }
+
+    // Mostrar resultado
+    let resultado = verificarPelea(pelea)
+    alert(resultado)
 }
+
+
+function verificarPelea(pelea) {
+    if (pelea == 0) {
+        return "EMPATE 🤝"
+    } else if (pelea == 1) {
+
+        return "GANASTE 🎉"
+    }
+    else {
+        return "PERDISTE 💀"
+    }
+}
+
+function peleaConHipodoge(enemigo) {
+    switch (enemigo) {
+        case "Ratigueya":
+        case "Langostelvis":
+        case "Pydos":
+            return 1
+        case "Capipeo":
+        case "Tucapalma":
+            return -1
+        default:
+            return 0
+    }
+}
+
+function peleaConCapipeo(enemigo) {
+    switch (enemigo) {
+        case "Ratigueya":
+        case "Pydos":
+            return 1
+        case "Hipodoge":
+        case "Langostelvis":
+        case "Tucapalma":
+            return -1
+        default:
+            return 0
+    }
+}
+
+function peleaConRatigueya(enemigo) {
+    switch (enemigo) {
+        case "Capipeo":
+        case "Tucapalma":
+            return 1
+        case "Hipodoge":
+        case "Langostelvis":
+        case "Pydos":
+            return -1
+        default:
+            return 0
+    }
+}
+
+function peleaConLangostelvis(enemigo) {
+    switch (enemigo) {
+        case "Ratigueya":
+        case "Pydos":
+            return 1
+        case "Hipodoge":
+            return 0
+        case "Capipeo":
+        case "Tucapalma":
+            return 0
+        default:
+            return 0
+    }
+}
+
+function peleaConTucapalma(enemigo) {
+    switch (enemigo) {
+        case "Capipeo":
+        case "Ratigueya":
+        case "Langostelvis":
+            return 1
+        case "Pydos":
+        case "Hipodoge":
+            return 0
+        default:
+            return 0
+    }
+}
+
+function peleaConPydos(enemigo) {
+    switch (enemigo) {
+        case "Capipeo":
+        case "Ratigueya":
+            return 1
+        case "Hipodoge":
+        case "Tucapalma":
+        case "Langostelvis":
+            return -1
+        default:
+            return 0
+    }
+}
+
+function aleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+
 
 window.addEventListener('load', iniciarJuego)
