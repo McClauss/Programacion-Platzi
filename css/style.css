@@ -80,3 +80,195 @@ span {
     font-weight: bold;
     color: #ff4081;
 }
+
+/* ==== BOTÓN FUEGO CON LLAMAS NARANJA ==== */
+#boton-fuego {
+    background: linear-gradient(to right, #3b1f00, #000000);
+    border-color: #ff6a00;
+    color: #fff5e1;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px #7f3300;
+    z-index: 1;
+}
+
+#boton-fuego:hover,
+#boton-fuego:active {
+    background: #000;
+    color: #ffae00;
+    box-shadow: 0 0 20px #ff6a00, inset 0 0 30px #ffae00;
+}
+
+#boton-fuego::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,106,0,0.25) 20%, transparent 70%);
+    animation: llamasNaranja 1s infinite linear;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes llamasNaranja {
+    0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+    50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+    100% { transform: scale(1) rotate(360deg); opacity: 0.6; }
+}
+
+
+/* ==== BOTÓN AGUA CON EFECTO REALISTA Y MÁS LLENADO ==== */
+#boton-agua {
+    background: #001f3f;
+    border-color: #00e5ff;
+    color: #e0f7fa;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: inset 0 0 15px #004b7a;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Capa de agua animada */
+#boton-agua::after {
+    content: "";
+    position: absolute;
+    bottom: -30%;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 70%, rgba(0,229,255,0.6) 25%, rgba(0,119,190,0.7) 50%, rgba(0,60,120,0.9) 100%);
+    animation: aguaWave 2s ease-in-out infinite;
+    z-index: 0;
+    opacity: 0.9;
+    filter: brightness(1.5) saturate(1.4);
+    transition: bottom 0.4s ease-in-out;
+}
+
+/* Hover: el agua sube y brilla más */
+#boton-agua:hover::after,
+#boton-agua:active::after {
+    bottom: 0;
+    opacity: 1;
+    filter: brightness(2) saturate(1.8);
+}
+
+/* Pequeño brillo al pasar el mouse */
+#boton-agua:hover,
+#boton-agua:active {
+    box-shadow: inset 0 0 30px #00e5ff, 0 0 12px #00e5ff;
+    color: #001f3f;
+    background: #003f6e;
+}
+
+/* Animación de oleaje */
+@keyframes aguaWave {
+    0% {
+        transform: translateX(0%) translateY(0%) scale(1);
+        border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+    }
+    50% {
+        transform: translateX(-25%) translateY(-5%) scale(1.05);
+        border-radius: 60% 40% 50% 50% / 50% 55% 45% 55%;
+    }
+    100% {
+        transform: translateX(0%) translateY(0%) scale(1);
+        border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+    }
+}
+
+/* ==== BOTÓN TIERRA (ARENA Y ROCAS) ==== */
+#boton-tierra {
+    background: linear-gradient(#c2a36b, #7b5e2b);
+    border: 2px solid #8b5a2b;
+    color: #3b2a09;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px #6e4a1f;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Textura de superficie */
+#boton-tierra::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+    opacity: 0.35;
+    z-index: 0;
+}
+
+/* Polvo visible */
+#boton-tierra::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 180%;
+    height: 80%;
+    background: radial-gradient(circle at 50% 100%, rgba(194,163,107,0.8) 0%, rgba(245,222,179,0.4) 60%, transparent 100%);
+    transform: translateX(-50%) scaleY(0);
+    opacity: 0;
+    transition: all 0.4s ease-out;
+    z-index: 1;
+}
+
+#boton-tierra:hover::after,
+#boton-tierra:active::after {
+    transform: translateX(-50%) scaleY(1.3);
+    opacity: 0.9;
+    animation: polvoExplota 0.9s ease-out forwards;
+}
+
+/* Color brillante y levantamiento al hover */
+#boton-tierra:hover,
+#boton-tierra:active {
+    background: linear-gradient(#d6b676, #8b6a3a);
+    box-shadow: 0 0 10px #d1b171, inset 0 0 12px #6e4a1f;
+    transform: translateY(-2px);
+    color: #2a1902;
+}
+
+/* Polvo animado */
+@keyframes polvoExplota {
+    0% {
+        transform: translateX(-50%) scaleY(1);
+        opacity: 0.6;
+        filter: blur(2px);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-20%) scaleY(1.3);
+        opacity: 1;
+        filter: blur(1px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-70%) scaleY(0.9);
+        opacity: 0;
+        filter: blur(5px);
+    }
+}
+
+/* === Rocas === */
+#boton-tierra span.rock {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #b58c4a;
+    border-radius: 2px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: 0 0 3px rgba(0,0,0,0.4);
+}
+
+/* Rocas saltando con más fuerza */
+@keyframes rocasSaltando {
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
+    20% { transform: translateY(-25px) scale(1.2); opacity: 1; }
+    50% { transform: translateY(-40px) scale(0.9); opacity: 0.9; }
+    100% { transform: translateY(40px) scale(0.6); opacity: 0; }
+}
+
+

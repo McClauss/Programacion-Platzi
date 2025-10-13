@@ -1,8 +1,25 @@
+let ataqueJugador=""
+let ataqueEnemigo=""
+
+//Inicio del juego
 function iniciarJuego() {
+
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador)
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.addEventListener('click',ataqueFuego)
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.addEventListener('click',ataqueAgua)
+    let botonTierra = document.getElementById('boton-tierra')
+    botonTierra.addEventListener('click',ataqueTierra)
+
+    let botonReset = document.getElementById('reiniciar')
+    botonReset.addEventListener('click',resetearJuego)
+
 }
 
+//Selección de mascotas
 function seleccionarMascotaJugador() {
 
     //mascotaJugador
@@ -72,6 +89,7 @@ function seleccionarMascotaEnemigo(tuMascota) {
     pelear(tuMascota, spanMascotaEnemigo.innerHTML)
 }
 
+//Pelea de animales sin ataques
 function pelear(tuMascota, mascotaEnemigo) {
     let spanVidasTuMascota = document.getElementById('vidas-tumascota')
     let spanVidasMascotaEnemigo = document.getElementById('vidas-mascotaEnemigo')
@@ -210,10 +228,68 @@ function peleaConPydos(enemigo) {
     }
 }
 
+//Ataques botones Fuego,Agua y Tierra
+function ataqueFuego(){
+    ataqueJugador="FUEGO"
+    alert(ataqueJugador)
+    ataqueEnemigo=ataqueDelEnemigo()
+    alert(ataqueEnemigo)
+    crearMensaje('1')
+    
+}
+function ataqueAgua(){
+    ataqueJugador="AGUA"
+    alert(ataqueJugador)
+    ataqueEnemigo=ataqueDelEnemigo()
+   alert(ataqueEnemigo)
+   crearMensaje('1')
+}
+function ataqueTierra(){
+    ataqueJugador="TIERRA"
+    alert(ataqueJugador)
+    ataqueEnemigo=ataqueDelEnemigo()
+    alert(ataqueEnemigo)
+    crearMensaje('1')
+}
+
+function ataqueDelEnemigo(){
+    let ataqueAleatorio = aleatorio(1, 3)
+
+    if (ataqueAleatorio == 1) {
+        return "FUEGO"
+    } else if (ataqueAleatorio == 2) {
+        return "AGUA"
+    } else if (ataqueAleatorio == 3) {
+       return "TIERRA"
+    }else{
+        return ""
+    }
+}
+
+function crearMensaje(opcion){
+    let sectionMensajes = document.getElementById('mensajes')
+
+    let parrafo = document.createElement('p')
+    if (opcion=='1'){
+        parrafo.innerHTML = 'Tu mascota atacó con '+ataqueJugador+', la mascota del enemigo atacó con '+ataqueEnemigo+' - ....'    
+    }else{
+        alert('Reseteo')
+        sectionMensajes.innerHTML=''
+    }
+    
+
+    sectionMensajes.appendChild(parrafo)
+}
+
+//Resetear juego
+function resetearJuego(){
+    crearMensaje('2')
+}
+
+//Otras
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
-
-
+//Carga Listeners
 window.addEventListener('load', iniciarJuego)
