@@ -127,7 +127,7 @@ function pelear(tuMascota, mascotaEnemigo) {
 
     // Mostrar resultado
     let resultado = verificarPelea(pelea)
-    alert(resultado)
+    //alert(resultado)
 }
 
 
