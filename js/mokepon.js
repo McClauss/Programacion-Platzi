@@ -1,5 +1,7 @@
 let ataqueJugador=""
 let ataqueEnemigo=""
+let extraJugador=0
+let extraEnemigo=0
 
 //Inicio del juego
 function iniciarJuego() {
@@ -86,7 +88,7 @@ function seleccionarMascotaEnemigo(tuMascota) {
         alert("Enemigo selecciona a una mascota")
     }
 
-    pelear(tuMascota, spanMascotaEnemigo.innerHTML)
+    //pelear(tuMascota, spanMascotaEnemigo.innerHTML)
 }
 
 //Pelea de animales sin ataques
@@ -231,24 +233,24 @@ function peleaConPydos(enemigo) {
 //Ataques botones Fuego,Agua y Tierra
 function ataqueFuego(){
     ataqueJugador="FUEGO"
-    alert(ataqueJugador)
+    alert('Jugador ataca con '+ataqueJugador)
     ataqueEnemigo=ataqueDelEnemigo()
-    alert(ataqueEnemigo)
+    alert('Enemigo ataca con '+ataqueEnemigo)
     crearMensaje('1')
     
 }
 function ataqueAgua(){
     ataqueJugador="AGUA"
-    alert(ataqueJugador)
+    alert('Jugador ataca con '+ataqueJugador)
     ataqueEnemigo=ataqueDelEnemigo()
-   alert(ataqueEnemigo)
+   alert('Enemigo ataca con '+ataqueEnemigo)
    crearMensaje('1')
 }
 function ataqueTierra(){
     ataqueJugador="TIERRA"
-    alert(ataqueJugador)
+    alert('Jugador ataca con '+ataqueJugador)
     ataqueEnemigo=ataqueDelEnemigo()
-    alert(ataqueEnemigo)
+    alert('Enemigo ataca con '+ataqueEnemigo)
     crearMensaje('1')
 }
 

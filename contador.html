@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoopDay GT | Pulse Edition</title>
+  <link rel="stylesheet" href="css/contador.css" />
+  <link href="https://fonts.cdnfonts.com/css/digital-7-mono" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1 class="logo">LoopDay <span>GT</span></h1>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Mis Conteos</a></li>
+        <li><a href="#">Comunidad</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- MIS CONTEOS -->
+    <section class="mis-conteos">
+      <h2 class="titulo">Mis Conteos</h2>
+
+      <div class="carousel-wrap">
+        <button class="nav prev"></button>
+
+        <div class="carousel">
+          <div class="card add-card">
+            <div class="add-circle">+</div>
+            <p>Nuevo conteo</p>
+          </div>
+
+          <div class="card">
+            <div class="label">Días sin Coca Cola</div>
+
+            <div class="contador"
+                 data-running="false"
+                 data-start=""
+                 data-accum="0"
+                 data-record="0">
+              0d 00:00:00.000
+            </div>
+            <div class="contador-labels">
+              <span>Días</span>
+              <span>Horas</span>
+              <span>Min</span>
+              <span>Seg</span>
+              <span>Ms</span>
+            </div>
+
+            <div class="record">
+              🏆 <span class="valor-record">0d 00:00:00.000</span>
+              <span class="fecha-record">(–)</span>
+            </div>
+
+            <div class="controls">
+              <button class="btn iniciar">▶</button>
+              <button class="btn pausa">⏸</button>
+              <button class="btn resetear">⏹</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="label">Días sin azúcar</div>
+            <div class="contador" data-running="false" data-accum="0" data-record="0">0d 00:00:00.000</div>
+            <div class="contador-labels">
+              <span>Días</span>
+              <span>Horas</span>
+              <span>Min</span>
+              <span>Seg</span>
+              <span>Ms</span>
+            </div>
+            <div class="record">🏆 
+              <span class="valor-record">0d 00:00:00.000</span>
+              <span class="fecha-record">(–)</span>
+            </div>
+            <div class="controls">
+              <button class="btn iniciar">▶</button>
+              <button class="btn pausa">⏸</button>
+              <button class="btn resetear">⏹</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="nav next"></button>
+      </div>
+    </section>
+
+    <!-- COMUNIDAD -->
+    <section class="comunidad">
+      <h2 class="titulo">Comunidad</h2>
+
+      <div class="carousel-wrap">
+        <button class="nav prev"></button>
+        <div class="carousel">
+          <div class="card">
+            <div class="label">@Sofía — Días sin fumar</div>
+            <div class="contador">0d 00:00:00.000</div>
+            <div class="contador-labels">
+              <span>Días</span>
+              <span>Horas</span>
+              <span>Min</span>
+              <span>Seg</span>
+              <span>Ms</span>
+            </div>
+            <div class="record">🏆 
+              <span class="valor-record">0d 00:00:00.000</span> 
+              <span class="fecha-record">(–)</span>
+            </div>
+            <div class="controls">
+              <button class="btn iniciar">▶</button>
+              <button class="btn pausa">⏸</button>
+              <button class="btn resetear">⏹</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="label">@Pablo — Días sin alcohol</div>
+            <div class="contador">0d 00:00:00.000</div>
+            <div class="contador-labels">
+              <span>Días</span>
+              <span>Horas</span>
+              <span>Min</span>
+              <span>Seg</span>
+              <span>Ms</span>
+            </div>
+            <div class="record">🏆 
+              <span class="valor-record">0d 00:00:00.000</span> 
+              <span class="fecha-record">(–)</span>
+            </div>
+            <div class="controls">
+              <button class="btn iniciar">▶</button>
+              <button class="btn pausa">⏸</button>
+              <button class="btn resetear">⏹</button>
+            </div>
+          </div>
+        </div>
+        <button class="nav next"></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 LoopDay GT — Vive en tu mejor marcha</p>
+  </footer>
+
+  <script src="js/contador.js"></script>
+</body>
+</html>

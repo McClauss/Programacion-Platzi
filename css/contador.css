@@ -1,0 +1,287 @@
+@import url('https://fonts.cdnfonts.com/css/digital-7-mono');
+
+:root {
+  --bg: radial-gradient(circle at center, #1a1a1a, #0b0b0b);
+  --card: linear-gradient(145deg, #2f2f2f, #181818);
+  --led: #0aff8f;
+  --led-glow: rgba(0, 255, 180, 0.7);
+  --text: #eee;
+}
+
+/* ---------- ESTRUCTURA GENERAL ---------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  text-align: center;
+}
+
+/* ---------- HEADER ---------- */
+header {
+  background: #0d0d0d;
+  padding: 1rem 0.5rem;
+}
+.logo {
+  color: var(--led);
+  text-shadow: 0 0 20px var(--led-glow);
+  font-size: 2.3rem;
+  animation: pulse 2s infinite alternate;
+  letter-spacing: 1px;
+}
+.logo span {
+  color: #00ffaa;
+}
+@keyframes pulse {
+  from { text-shadow: 0 0 5px var(--led); }
+  to { text-shadow: 0 0 25px var(--led-glow); }
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0;
+  margin: 0.5rem 0;
+  list-style: none;
+}
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s;
+}
+nav a:hover {
+  color: var(--led);
+  text-shadow: 0 0 8px var(--led-glow);
+}
+
+/* ---------- TITULOS ---------- */
+.titulo {
+  color: var(--led);
+  text-shadow: 0 0 10px var(--led-glow);
+  font-size: 1.8rem;
+  animation: pulse 3s infinite alternate;
+  margin-top: 1.5rem;
+}
+
+/* ---------- CARRUSEL (vista grande) ---------- */
+.carousel-wrap {
+  position: relative;
+  margin: 2rem auto;
+  max-width: 1200px;
+  overflow: hidden;
+}
+.carousel {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  justify-content: center;
+  padding: 1rem;
+}
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+.carousel::-webkit-scrollbar-thumb {
+  background: var(--led-glow);
+  border-radius: 6px;
+}
+
+/* ---------- FLECHAS ---------- */
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+.nav:hover {
+  background: var(--led);
+  box-shadow: 0 0 15px var(--led-glow);
+}
+.nav.prev { left: -15px; }
+.nav.next { right: -15px; }
+.nav::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  margin: auto;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  margin-top: 15px;
+}
+.nav.prev::after { border-right: 10px solid #fff; }
+.nav.next::after { border-left: 10px solid #fff; }
+
+/* ---------- CARD ---------- */
+.card {
+  flex: 0 0 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: var(--card);
+  box-shadow: inset 0 0 30px #000, 0 0 25px rgba(0, 255, 120, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--led-glow);
+}
+
+/* ---------- CONTADOR ---------- */
+.label {
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.contador {
+  font-family: 'Digital-7 Mono', monospace;
+  font-size: 1.9rem;
+  color: var(--led);
+  text-shadow: 0 0 15px var(--led-glow);
+  background: #0a0a0a;
+  border-radius: 10px;
+  padding: 0.4rem 1rem;
+  display: inline-block;
+}
+.contador-labels {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ---------- RECORD ---------- */
+.record {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin-top: 0.6rem;
+}
+.valor-record {
+  color: var(--led);
+}
+.fecha-record {
+  color: #777;
+}
+
+/* ---------- BOTONES ---------- */
+.controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+.btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: linear-gradient(145deg, #444, #1a1a1a);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn:hover {
+  background: var(--led);
+  color: #000;
+  box-shadow: 0 0 10px var(--led-glow);
+}
+
+/* ---------- NUEVO CONTEO ---------- */
+.add-card {
+  border: 2px dashed #666;
+  color: var(--led);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.add-circle {
+  font-size: 2.5rem;
+  border: 2px solid var(--led);
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.add-card:hover .add-circle {
+  background: var(--led);
+  color: #000;
+  box-shadow: 0 0 25px var(--led-glow);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  color: #888;
+  margin: 3rem 0;
+  font-size: 0.9rem;
+}
+
+/* ---------- RESPONSIVE REAL ---------- */
+@media (max-width: 1024px) {
+  .carousel {
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+  .card {
+    flex: 0 0 calc(50% - 2rem);
+    height: 280px;
+  }
+  .nav {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .card {
+    flex: 0 0 auto;
+    width: 240px;
+    height: 240px;
+  }
+  .contador {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 200px;
+    height: 200px;
+  }
+  .contador {
+    font-size: 1.2rem;
+  }
+  .contador-labels {
+    font-size: 0.6rem;
+  }
+  .controls .btn {
+    width: 36px;
+    height: 36px;
+  }
+}
